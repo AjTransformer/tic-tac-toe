@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body onload="initializeGame();">
+    <div class="result hide">
+        <p id="msg"></p>
+        <button id="newGame">New Game</button>
+    </div>
+    <main>
+        <h1>Tic-Tac-Toe</h1>
+        <div popover id="mydiv">
+            <ul>
+                <li><strong>Game Setup:</strong> The game is played on a 3x3 grid.</li>
+                <li><strong>Players:</strong> There are two players. Player A uses "O" and Player B uses "X".</li>
+                <li><strong>Objective:</strong> The goal is to be the first player to get three of your marks in a row (horizontally, vertically, or diagonally).</li>
+                <li><strong>Gameplay:</strong>
+                    <ul>
+                        <li>Players take turns placing their marks in an empty square.</li>
+                        <li>The first player to get three of their marks in a row wins the game.</li>
+                        <li>If all nine squares are filled and neither player has three in a row, the game is a draw.</li>
+                    </ul>
+                </li>
+                <li><strong>Starting the Game:</strong> Typically, the player using "O" goes first.</li>
+                <li><strong>Winning the Game:</strong> To win, you need to place three of your marks in a row. This can be done horizontally, vertically, or diagonally.</li>
+                <li><strong>Draw:</strong> If all nine squares are filled and no player has three in a row, the game ends in a draw.</li>
+            </ul>
+            <button popovertarget="mydiv" popovertargetaction="hide" class="btn btn-primary" id="close">Close</button>
+        </div>
+        <button popovertarget="mydiv" class="btn btn-outline-light">Rules</button>
+        <div id="container">            
+            <div id="boxes">
+                <button class="btns"></button>
+                <button class="btns"></button>
+                <button class="btns"></button>
+                <button class="btns"></button>
+                <button class="btns"></button>
+                <button class="btns"></button>
+                <button class="btns"></button>
+                <button class="btns"></button>
+                <button class="btns"></button>
+            </div>
+        </div>
+        <div id="actionBtn">
+            <button id="reset">Reset Game</button>
+            <button type="button" id="btn">Result</button>
+        </div>
+        <div id="data" class="hide">
+            <table id="displayResult" class="table table-bordered border-primary"></table>
+        </div>
+        <div>
+            <img id="refresh" src="./images/refresh.png" alt="clear table" title="Clear Table" class="hide"/>
+        </div>   
+    </main>
+    <script>
+        let dataFromStorage = JSON.parse(localStorage.getItem("statatics"));
+        function loadingStorage() {
+            if (localStorage.getItem("statatics") === null) {
+                console.log("data is empty");
+                let storage = {
+                    matchesPlayed: 0,
+                    playerA: 0,
+                    playerB: 0,
+                    draw: 0
+                };
+                dataFromStorage = localStorage.setItem("statatics", JSON.stringify(storage));
+            }
+            dataFromStorage = JSON.parse(localStorage.getItem("statatics"));
+        }
+
+        function loadTableData() {
+            let displayResult = document.querySelector("#displayResult");
+            if (dataFromStorage) {
+                displayResult.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Matches Played</th>
+                            <th>Player A won</th>
+                            <th>Player B won</th>
+                            <th>Match Draw</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>${dataFromStorage.matchesPlayed}</td>
+                            <td>${dataFromStorage.playerA}</td>
+                            <td>${dataFromStorage.playerB}</td>
+                            <td>${dataFromStorage.draw}</td>
+                        </tr>
+                    </tbody>
+                `;
+            } else {
+                console.error('Failed to load data from localStorage.');
+            }
+        }
+
+        function initializeGame() {
+            loadingStorage();
+            loadTableData();
+        }
+    </script>
+    <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+/* .para{
+    color: blueviolet;
+    font-size: 50px;
+    text-align: right;
+}
+
+.newClass{
+    background-color: brown;
+} */
+
+*{
+    margin: 0px;
+    padding:0px;
+}
+
+body {
+    background-color: #548687;
+    text-align: center;
+  }
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#container{
+    height: 70vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+#boxes{
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center;
+    align-items: center; */
+    gap:1.5vmin;
+    margin: auto;
+}
+
+.btns{
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+    font-size: 8vmin;
+    background-color: #ffffc7;
+}
+
+#newGame{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+}
+
+.result{
+    height: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:4rem;
+}
+
+#msg{
+    font-size: 15vmin;
+    color: #ffffc7;
+}
+
+.hide{
+    display: none;
+}
+
+#actionBtn{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+#data{
+    width: 70%;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}
+
+table{
+    margin-top: 10px;
+}
+
+#reset{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+}
+
+#btn{
+    background-color: #B98EA7;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-size: 1.25rem;
+    margin-left: 1px;
+}
+
+#mydiv{
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    height: 50vmin;
+    h1 {
+        color: #333;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 10px;
+    }
+}
+
+#close{
+    border-radius: 1rem;
+    margin: auto;
+}
+
+#refresh{
+    height: 3%;
+    width: 3%;
+    margin: 1px;
+    cursor:pointer;
+}
